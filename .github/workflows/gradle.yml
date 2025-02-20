@@ -25,8 +25,8 @@ jobs:
       # 2. application-secret.properties 생성
       - name: Create application-secret.properties
         run: |
-          echo "spring.security.user.name=${{ SECURITY_USERNAME }}" > ./src/main/resources/application-secret.properties
-          echo "spring.security.user.password=${{ SECURITY_PASSWORD }}" >> ./src/main/resources/application-secret.properties
+          echo "spring.security.user.name=${{ secrets.SECURITY_USERNAME }}" > ./src/main/resources/application-secret.properties
+          echo "spring.security.user.password=${{ secrets.SECURITY_PASSWORD }}" >> ./src/main/resources/application-secret.properties
 
       # 3. SpringBoot 애플리케이션 빌드
       - name: Build with Gradle
