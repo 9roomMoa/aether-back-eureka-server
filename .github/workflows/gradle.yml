@@ -31,7 +31,7 @@ jobs:
       - name: Create application-cloud.properties
         run: |
           echo "eureka.instance.hostname=test.aether.asia" > ./src/main/resources/application-cloud.properties
-          echo "eureka.client.service-url.default-zone={{ secrets.EUREKA_CLIENT_SERVICE_URL }}" > ./src/main/resources/application-cloud.properties
+          echo "eureka.client.service-url.default-zone={{ secrets.EUREKA_CLIENT_SERVICE_URL }}" >> ./src/main/resources/application-cloud.properties
 
       # 3. SpringBoot 애플리케이션 빌드
       - name: Build with Gradle
