@@ -22,11 +22,16 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      # 2. application-secret.properties 생성
+      # 2. application-secret/cloud.properties 생성
       - name: Create application-secret.properties
         run: |
           echo "spring.security.user.name=${{ secrets.SECURITY_USERNAME }}" > ./src/main/resources/application-secret.properties
           echo "spring.security.user.password=${{ secrets.SECURITY_PASSWORD }}" >> ./src/main/resources/application-secret.properties
+
+      - name: Create application-cloud.properties
+        run: |
+          echo "eureka.instance.hostname=aether.asia" > ./src/main/resources/application-cloud.properties
+          echo "eureka.client.service-url.default-zone=${{ secrets.EUREKA_CLIENT_SERVICE_URL }}" >> ./src/main/resources/application-cloud.properties
 
       # 3. SpringBoot 애플리케이션 빌드
       - name: Build with Gradle
