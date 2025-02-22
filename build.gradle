@@ -39,3 +39,11 @@ dependencyManagement {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+processResources.dependsOn('copySecret')
+
+tasks.register('copySecret', Copy) {
+	from './aether-security'
+	include 'application-eurekaserver.properties'
+	into 'src/main/resources'
+}
